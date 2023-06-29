@@ -11,7 +11,7 @@ function config_screen()
 
     global win
 
-    Screen('Preference', 'SkipSyncTests', 1);
+    Screen('Preference', 'SkipSyncTests', 0);
 
     % Default settings for setting up Psychtoolbox
     PsychDefaultSetup(2);
@@ -28,7 +28,7 @@ function config_screen()
 
     % Open the window on the chosen screen with the specified position and size.
     % Include windowRect as last parameter of Screen() only for debugging
-    [window, windowRect] = Screen('OpenWindow', screenNumber, 1);
+    [window, windowRect] = Screen('OpenWindow', screenNumber, 0);
 
     % Set window transparency
     Screen(window, 'BlendFunction', GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);

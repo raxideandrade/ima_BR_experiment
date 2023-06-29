@@ -22,14 +22,14 @@ expt.min_trials = 40 ; % Minimum number of trials
 expt.max_trials = 100;
 expt.isrunning = true;
 expt.trial = 1;
-expt.lumblue = 2 ;
+expt.lumblue = 2;
 expt.max_lumblue = 2; % 1.198
 expt.lumblue_arr = []; % Array to store lumblue values when a reversal happens
 expt.step_size = 0.05; % Update luminance by n percent
 expt.reversals = 0;
-expt.reversal_threshold = 3 ; % Experimet stops when reached
+expt.reversal_threshold = 8 ; % Experimet stops when reached
 % Display size should be changed according to experiment conditions using a formula
-expt.display_size = 200;
+expt.display_size = visual_angle2pixel(4,24,64,0);
 
 %% Functions path
 addpath(pwd);
@@ -69,7 +69,7 @@ while expt.isrunning && expt.reversals < expt.reversal_threshold && expt.trial <
                     dominant = pre_dominant;
                 end
 
-                output(expt.trial, :) = [strcmp(dominant, 'LeftArrow') expt.lumblue]; % Store values
+                expt.output(expt.trial, :) = [strcmp(dominant, 'LeftArrow') expt.lumblue]; % Store values
                 
                 % Check for reversals
                 if strcmp(dominant, pre_dominant) ~= 1 && strcmp(pre_dominant, '') ~= 1
@@ -82,5 +82,7 @@ while expt.isrunning && expt.reversals < expt.reversal_threshold && expt.trial <
             end
         end
     end
+    expt.lumblue_mean = mean (expt.lumblue_arr);
+     save('output/luminance_s.mat', 'expt',"-mat");
 end
 sca

@@ -1,4 +1,4 @@
- 
+
 
 % Global variables
  
@@ -14,7 +14,7 @@ stage = 1;
 % 4. Show BR stimulus. 5. Indicate perception (user input) 
 dominant = '';
 vividness = '';
-wasKeyDown = false;
+wasKeyDown = false; 
 counter = 1;
 
 expt.time = 0;
@@ -23,17 +23,16 @@ expt.key = ''; % Exmpty string to store key pressed
 expt.state = 0; % keep track of the current state of the response keyboard
 
 expt.event_dur = [1 7 0 0.75]; % Duration of four steps
-expt.max_trials = 20;
+expt.max_trials = 100;
 expt.isrunning = true;
 expt.trial = 1;
 expt.which_anaglyph = 1; % Variable to indicate which anaglyph, background
 % and foreground images to display. TODO: equate it to random 1-3
 expt.which_queue = 1;  % Variable to indicate wether to show back or foreground
 % with random 1-2
-% display_size = visual_angle2pixel(2, 23.8, 69, win.window); % Display size should be changed according to
-expt.display_size = visual_angle2pixel(4, 24, 64,0); 
+expt.display_size = visual_angle2pixel(4, 24, 64, 0);
 % experiment conditions using a formula
-expt.lumblu_1 = 0; %change for the luminance value of the subject
+expt.lumblu_1 = 1.52; %change for the luminance value of the subject
 %% Functions path
 addpath(pwd);
 
@@ -59,9 +58,10 @@ while expt.isrunning && expt.trial <= expt.max_trials
 
  % Subject rates vividness. Experiment pauses until valid input
     elseif stage == 3
-        while ~any(strcmp(vividness,{'1!','2@','3#','4$'}))
+        while ~any(strcmp(vividness,{'1','2','3','4'}))
             DrawFormattedText(win.window, ['Rate Vividness \n \n \n 1 = low 2 = moderate 3 = elevated 4 = high \n \n \n'], 'center', 'center', [255 255 255]);
             Screen('Flip', win.window);%updates the screen 
+%             pause; % Wait for keypress
             [vividness, wasKeyDown] = response(wasKeyDown);
             data(counter).vividness = vividness;
 
@@ -85,11 +85,9 @@ while expt.isrunning && expt.trial <= expt.max_trials
         pause(4); % Wait 2 seconds before next trial
         counter = counter + 1;
         expt.trial = expt.trial + 1;
-
     end
-        stage = stage + 1;
-        
-        save('output/data.mat', 'data');
+    stage = stage + 1;
+    save('output/data.mat', 'data');
 end
-        
+
 sca

@@ -4,7 +4,7 @@ function display_instructions()
 
     % Display instructions for the subject
     DrawFormattedText(win.window, ['Fixate on the fixation cross throughout the expt' ...
-        '\n\nPress Left arrow = Blue  Right arrow = Red  Down arrow = Mixed\n\n\nPress space bar to start'], 'center', 'center', win.white);
+        '\n\nPress Left arrow = Brandenburg Tor  Right arrow = Angela Merkel  Down arrow = Mixed\n\n\nPress space bar to start'], 'center', 'center', win.white);
     win.vbl = Screen('Flip', win.window);
     win.ifi = Screen('GetFlipInterval', win.window);
     win.hertz = FrameRate(win.window);

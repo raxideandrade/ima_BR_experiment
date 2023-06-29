@@ -7,12 +7,12 @@ function anaglyph_image()
     global win
 
     % Load the background image
-    expt.backgroundImage = imread('cyan_tor.jpg'); 
+    expt.backgroundImage = imread('cyan_tor.png'); 
     expt.backgroundImage = imresize(expt.backgroundImage, [NaN expt.display_size]); 
     expt.backgroundImage_text = Screen('MakeTexture', win.window, expt.backgroundImage );
 
     % Load the foreground image
-    expt.foregroundImage = imread('red_merkel.jpg'); 
+    expt.foregroundImage = imread('red_merkel.png'); 
     expt.foregroundImage = imresize(expt.foregroundImage, [NaN expt.display_size]); 
     expt.foregroundImage_text = Screen('Maketexture', win.window, expt.foregroundImage);
    
