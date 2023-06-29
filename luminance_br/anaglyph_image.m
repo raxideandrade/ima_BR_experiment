@@ -1,7 +1,5 @@
 function anaglyph_image()
- % This function takes two images and superposed them to create 
- % and anaglyph image 
-
+ 
     % Save value in struct
     global expt
     global win

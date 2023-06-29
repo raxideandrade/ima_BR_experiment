@@ -8,7 +8,7 @@ function [time] = upd_screen(event, dominant, pre_dominant)
 
     if event == 2 % Display anaglyph
         anaglyph = expt.anaglyph;
-        anaglyph(:,:,3) = expt.anaglyph(:,:,3).*expt.lumblue;
+        anaglyph(:,:,2:3) = expt.anaglyph(:,:,2:3).*expt.lumblue;
         expt.anaglyph_text = Screen('MakeTexture', win.window, anaglyph);
         Screen('DrawTexture', win.window, expt.anaglyph_text);
     elseif event ==  4
