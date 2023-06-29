@@ -32,7 +32,7 @@ expt.which_queue = 1;  % Variable to indicate wether to show back or foreground
 % with random 1-2
 expt.display_size = visual_angle2pixel(4, 24, 64, 0);
 % experiment conditions using a formula
-expt.lumblu_1 = 1.52; %change for the luminance value of the subject
+expt.lumblue_1 = 1.52; %change for the luminance value of the subject
 %% Functions path
 addpath(pwd);
 

@@ -1,4 +1,4 @@
- %% experimentt variables
+ %% Experimentt variables
 clear all
 
 % Global variables
@@ -15,7 +15,7 @@ pre_dominant = '';
 wasKeyDown = false;
 
 expt.key = ''; % Exmpty string to store key pressed
-expt.state = 0; % keep track of the current state of the response keyboard
+expt.state = 0; % Keep track of the current state of the response keyboard
 
 expt.event_dur = [2 0.7 0 2]; % Duration of four stages
 expt.min_trials = 40 ; % Minimum number of trials
