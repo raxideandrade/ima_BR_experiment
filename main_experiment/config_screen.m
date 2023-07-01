@@ -11,7 +11,7 @@ function config_screen()
 
     global win
 
-    Screen('Preference', 'SkipSyncTests', 0);
+    Screen('Preference', 'SkipSyncTests', 1);
 
     % Default settings for setting up Psychtoolbox
     PsychDefaultSetup(2);

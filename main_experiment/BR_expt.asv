@@ -87,10 +87,9 @@ while expt.isrunning && expt.trial <= expt.max_trials
         expt.trial = expt.trial + 1;
     end
     stage = stage + 1;
-    save(fullfile('output', ['data_', num2str(expt.subject), '.mat']), 'data');
-
+    filename = sprintf('data_%s.mat', num2str(data.subject));
+     save(fullfile('output', filename), 'data');
   
 end
 
 sca
- 

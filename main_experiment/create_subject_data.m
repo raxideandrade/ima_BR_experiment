@@ -1,25 +1,23 @@
 function create_subject_data()
-    global data
+    global expt
 
-    data.subject = '';
-    name = sprintf('sub%02.f', data.subject);
-    saving_dir = [cd '/output'];
+    expt.subject = '';
+  
 
     % Loop for create and save the subject data
-    while isempty(data.subject)
+    while isempty(expt.subject)
         prompt = {'Enter subject number'};
         dlgtitle = 'Input';
         dims = [1 35];
         definput = {''};
-        answer = inputdlg(prompt,dlgtitle,dims,definput);
+        answer = inputdlg(prompt, dlgtitle, dims, definput);
 
         if ~isempty(answer)
-            data.subject = str2double(answer{1,1});
+            expt.subject = str2double(answer{1, 1});
         end
     end
+    
+      % Store subject number in a variable
+    expt.subject = expt.subject;
 
-    % Creates the folder
-    if ~exist(saving_dir, 'dir')
-        mkdir(saving_dir);
-    end
 end
