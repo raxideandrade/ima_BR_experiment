@@ -21,14 +21,14 @@ function load_images()
     expt.anaglyph_1 = cat(3, expt.backgroundImage_1(:, :, 1), expt.foregroundImage_1 (:, :, 2:3));
 
     % Create a texture from the anaglyph_1 imagea
-    expt.anaglyph_1(:,:,2:3) = expt.anaglyph_1(:,:,2:3)*expt.lumblu_1;
+    expt.anaglyph_1(:,:,2:3) = expt.anaglyph_1(:,:,2:3)*expt.lumblue_1;
     expt.anaglyph_1_text = Screen('MakeTexture', win.window, expt.anaglyph_1);
 
 
-    %draw two white lines of thickness 3 pixels that intersect at the center of the screen, which creates a fixation cross
+    % Draw two white lines of thickness 3 pixels that intersect at the center of the screen, which creates a fixation cross
     Screen('DrawLine', win.window, [255 255 255], win.xc - 5, win.yc - 5, win.xc + 5, win.yc + 5, 3); %two white lines that intersect at the center of the screen
     Screen('DrawLine', win.window, [255 255 255], win.xc - 5, win.yc + 5, win.xc + 5, win.yc - 5, 3);%creating a fixation cross.
-    Screen('Flip', win.window);%updates the screen 
+    Screen('Flip', win.window); % Updates the screen 
 
 end
 
