@@ -49,7 +49,7 @@ while expt.isrunning && expt.reversals < expt.reversal_threshold && expt.trial <
     save('output/luminance_s.mat', 'expt',"-mat");
     % If n reversals set lumblue to its average so far in order to increase accuracy.
     % This could be change to hppen every 5 reversals with the mod() function
-    if mod(expt.reversals, 5) == 0
+    if mod(expt.reversals, 5) == 0 && expt.reversals > 1
         expt.lumblue = expt.lumblue_mean;
     end
 
