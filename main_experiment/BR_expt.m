@@ -1,5 +1,3 @@
-
-
 % Global variables
 global data 
 global expt 
@@ -77,14 +75,18 @@ while expt.isrunning && expt.trial <= expt.max_trials
             Screen('Flip', win.window);%updates the screen 
             % Wait for keypress
             [dominant, wasKeyDown] = response(wasKeyDown);
-             data(counter).dominant = dominant;
+            data(counter).dominant = dominant;
         end
-        stage = 0;
         vividness = 0;
         dominant = 0;
         pause(4); % Wait 2 seconds before next trial
         counter = counter + 1;
         expt.trial = expt.trial + 1;
+    elseif stage == 6
+        if mod(expt.trial, 25) == 0
+            display_instructions;
+        end
+        stage = 0;
     end
     stage = stage + 1;
     save(fullfile('output', ['data_', num2str(expt.subject), '.mat']), 'data');
