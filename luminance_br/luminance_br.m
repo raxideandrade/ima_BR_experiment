@@ -45,6 +45,12 @@ anaglyph_image(); % Create anaglyph, fore and background textures
 %% Experiment loop
 while expt.isrunning && expt.reversals < expt.reversal_threshold && expt.trial <= expt.max_trials  
     
+    % If n reversals set lumblue to its average so far in order to increase accuracy.
+    % This could be change to hppen every 5 reversals with the mod() function
+    if mod(expt.reversals, 5) == 0
+        expr.lumblue = expt.lumblue_mean;
+    end
+
     if update
         if stage == 4 && update == true
             upd_lum(dominant, pre_dominant);
