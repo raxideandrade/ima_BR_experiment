@@ -25,6 +25,8 @@ expt.trial = 1;
 expt.lumblue = 0.4;
 expt.max_lumblue = 5; % 1.198
 expt.lumblue_arr = []; % Array to store lumblue values when a reversal happens
+exp.mixed_arr = []; % Array to store lumblue values when subject votes 'mixed'
+expt.mixed_votes = 0; % For indexing results
 expt.step_size = 0.5; % Update luminance by n percent
 expt.reversals = 0;
 expt.reversal_threshold = 15; % Experimet stops when reac hed
@@ -66,6 +68,8 @@ while expt.isrunning && expt.reversals < expt.reversal_threshold && expt.trial <
                 % If input 'DownArrow' change dominant to pre_dominant
                 % because mixed is considered as previous vote
                 if strcmp(dominant, 'DownArrow')
+                    expt.mixed_votes = expt.mixed_votes + 1;
+                    expt.mixed_arr(expt.mixed_votes) = expt.lumblue;
                     dominant = pre_dominant;
                 end
 
