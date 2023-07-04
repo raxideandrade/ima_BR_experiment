@@ -31,6 +31,7 @@ expt.which_queue = 1;  % Variable to indicate wether to show back or foreground
 expt.display_size = visual_angle2pixel(4, 24, 64, 0);
 % experiment conditions using a formula
 expt.lumblue_1 = 1.52; %change for the luminance value of the subject
+
 %% Functions path
 addpath(pwd);
 
@@ -79,7 +80,6 @@ while expt.isrunning && expt.trial <= expt.max_trials
         end
         vividness = 0;
         dominant = 0;
-%         pause(4); % Wait 2 seconds before next trial
         counter = counter + 1;
         expt.trial = expt.trial + 1;
     elseif stage == 6
