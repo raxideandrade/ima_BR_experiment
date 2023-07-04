@@ -24,6 +24,7 @@ expt.isrunning = true;
 expt.trial = 1;
 expt.lumblue = 0.4;
 expt.max_lumblue = 5; % 1.198
+expt.min_lumblue = 0; % 1.198
 expt.lumblue_arr = []; % Array to store lumblue values when a reversal happens
 expt.mixed_arr = []; % Array to store lumblue values when subject votes 'mixed'
 expt.mixed_votes = 0; % For indexing results
@@ -49,7 +50,7 @@ while expt.isrunning && expt.reversals <= expt.reversal_threshold && expt.trial 
     save('output/luminance_s.mat', 'expt',"-mat");
     % If n reversals set lumblue to its average so far in order to increase accuracy.
     % This could be change to hppen every 5 reversals with the mod() function
-    if mod(expt.reversals, 10) == 0 && expt.reversals > 1
+    if expt.reversals == 7
         expt.lumblue = expt.lumblue_mean;
     end
 
