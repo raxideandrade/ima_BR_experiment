@@ -26,6 +26,6 @@ function display_que()
             DrawFormattedText(win.window, ['FIIIIIIILLLL IT \n \n \n'], centerX, centerY, [255 255 255]);
         end
     end
-   Screen('Flip', win.window);%updates the screen 
+   Screen('Flip', win.window);	% Updates the screen 
 
 end
