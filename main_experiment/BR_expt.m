@@ -68,10 +68,11 @@ end
 
 
 stage = 1;
+block_counter = 0;
 % Stages: 1. Show que. 2. Imagery interval. 3. Rate vividness (subject input)
 % 4. Show BR stimulus. 5. Indicate perception (user input) 
 function run_block()
-	while expt.isrunning && expt.trial <= expt.block_size
+	while expt.isrunning && block_counter < expt.block_size
 		%% Randomly assign value to expt.which_anaglyph and which_queue
 		if stage == 1
 			display_que(); % Display que according to which_queue
@@ -112,6 +113,7 @@ function run_block()
 			stage = 0;
 		end
 		stage = stage + 1;
+		block_counter = block_counter + 1;
 		save(fullfile('output', ['BR_', num2str(expt.subject), '.mat']), 'data');
 	end
 end
