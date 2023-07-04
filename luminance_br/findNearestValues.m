@@ -1,6 +1,9 @@
- function [min, max] = findNearestValues(vector)
+function [minValue, maxValue] = findNearestValues(vector)
     meanValue = mean(vector);  % Compute the mean of the vector
     [~, indices] = sort(abs(vector - meanValue));  % Sort the absolute differences from the mean
-	min = vector(indices(1));
-	max = vector(indices(2));
+    nearestValues = vector(indices(1:2));  % Get the two nearest values
+    nearestValues = sort(nearestValues);
+    
+    minValue = nearestValues(1);  % Minimum value
+    maxValue = nearestValues(2);  % Maximum value
 end
