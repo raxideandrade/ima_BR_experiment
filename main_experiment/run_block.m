@@ -1,21 +1,21 @@
 function run_block()
-% Global variables
-global data 
-global expt 
-global win
+	% Global variables
+	global data 
+	global expt 
+	global win
 
-stage = 1;
-block_counter = 0;
-dominant = '';
-vividness = '';
-% Stages: 1. Show que. 2. Imagery interval. 3. Rate vividness (subject input)
-% 4. Show BR stimulus. 5. Indicate perception (user input) 
+	stage = 1;
+	block_counter = 0;
+	dominant = '';
+	vividness = '';
+	% Stages: 1. Show que. 2. Imagery interval. 3. Rate vividness (subject input)
+	% 4. Show BR stimulus. 5. Indicate perception (user input) 
 	while expt.isrunning && block_counter < expt.block_size
 		%% Randomly assign value to expt.which_anaglyph and which_queue
 		if stage == 1
 			display_que(); % Display que according to which_queue
 			pause(expt.event_dur(stage));  
-			data(counter).queue = expt.which_queue;
+			data(expt.counter).queue = expt.which_queue;
 
 		elseif stage == 2
 			  display_frame();
@@ -28,7 +28,7 @@ vividness = '';
 				Screen('Flip', win.window);%updates the screen 
 	%             pause; % Wait for keypress
 				[vividness, wasKeyDown] = response(wasKeyDown);
-				data(counter).vividness = vividness;
+				data(expt.counter).vividness = vividness;
 
 			end
 	  % Display anaglyph according to which_anaglyph
@@ -42,11 +42,11 @@ vividness = '';
 				Screen('Flip', win.window);%updates the screen 
 				% Wait for keypress
 				[dominant, wasKeyDown] = response(wasKeyDown);
-				data(counter).dominant = dominant;
+				data(expt.counter).dominant = dominant;
 			end
 			vividness = 0;
 			dominant = 0;
-			counter = counter + 1;
+			expt.counter = expt.counter + 1;
 			expt.trial = expt.trial + 1;
 			stage = 0;
 		end

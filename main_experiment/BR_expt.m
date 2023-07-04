@@ -9,7 +9,7 @@ data = struct('queue', [], 'vividness', [], 'dominant', []);  % Initialize the d
 dominant = '';
 vividness = '';
 wasKeyDown = false; 
-counter = 1;
+expt.counter = 1;
 
 expt.isrunning = true;
 expt.time = 0;
