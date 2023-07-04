@@ -8,6 +8,7 @@ function run_block()
 	block_counter = 0;
 	dominant = '';
 	vividness = '';
+    wasKeyDown = false;
 	% Stages: 1. Show que. 2. Imagery interval. 3. Rate vividness (subject input)
 	% 4. Show BR stimulus. 5. Indicate perception (user input) 
 	while expt.isrunning && block_counter < expt.block_size
@@ -48,10 +49,11 @@ function run_block()
 			dominant = 0;
 			expt.counter = expt.counter + 1;
 			expt.trial = expt.trial + 1;
+            block_counter = block_counter + 1;
 			stage = 0;
 		end
 		stage = stage + 1;
-		block_counter = block_counter + 1;
+		
 		save(fullfile('output', ['BR_', num2str(expt.subject), '.mat']), 'data');
 	end
 end
