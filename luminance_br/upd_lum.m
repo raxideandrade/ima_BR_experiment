@@ -13,13 +13,15 @@ function upd_lum(dominant, pre_dominant)
         if strcmp(dominant, 'LeftArrow')
             % Increase lumblue
             expt.lumblue = expt.lumblue + (expt.lumblue * expt.step_size)
-
-            if expt.lumblue > expt.max_lumblue
-                expt.lumblue = expt.max_lumblue;
-            end
         else
             % Decrease lumblue
             expt.lumblue = expt.lumblue - (expt.lumblue * expt.step_size)
         end
+
+		if expt.lumblue > expt.max_lumblue
+			expt.lumblue = expt.max_lumblue;
+		end
+		if expt.lumblue < expt.min_lumblue
+			expt.lumblue = expt.min_lumblue;
     end
 end

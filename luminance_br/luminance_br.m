@@ -11,7 +11,7 @@ stage = 0;
 % There are 4 stages of the experiment: 1. pause, 2. show anaglyph,
 % 3. listen for subject input, 4. show image according to input
 dominant = '';
-pre_dominant = '';
+pre_dominant = ''; % Previously dominant
 wasKeyDown = false;
 
 expt.key = ''; % Exmpty string to store key pressed
@@ -23,7 +23,8 @@ expt.max_trials = 100;
 expt.isrunning = true;
 expt.trial = 1;
 expt.lumblue = 0.4;
-expt.max_lumblue = 5; % 1.198
+expt.max_lumblue = 5; % Max possible value. Will be modified after 7th reversal
+expt.min_lumblue = 0; % Min possible value. Will be modified after 7th reversal
 expt.lumblue_arr = []; % Array to store lumblue values when a reversal happens
 expt.mixed_arr = []; % Array to store lumblue values when subject votes 'mixed'
 expt.mixed_votes = 0; % For indexing results
@@ -45,18 +46,20 @@ anaglyph_image(); % Create anaglyph, fore and background textures
 %% Experiment loop
 while expt.isrunning && expt.reversals <= expt.reversal_threshold && expt.trial <= expt.max_trials  
     
-    expt.lumblue_mean = mean (expt.lumblue_arr);
+    expt.lumblue_mean = mean(expt.lumblue_arr);
     save('output/luminance_s.mat', 'expt',"-mat");
     % If n reversals set lumblue to its average so far in order to increase accuracy.
     % This could be change to hppen every 5 reversals with the mod() function
-    if mod(expt.reversals, 10) == 0 && expt.reversals > 1
+    if expt.reversals == 7
         expt.lumblue = expt.lumblue_mean;
+		expt.max_lumblue = ?
+		expt.min_lumblue = ?
     end
 
     if update
         if stage == 4 && update == true
             upd_lum(dominant, pre_dominant);
-            pre_dominant = dominant; 
+            pre_dominant = dominant;
             expt.trial = expt.trial + 1;
             stage = 1;
         else
