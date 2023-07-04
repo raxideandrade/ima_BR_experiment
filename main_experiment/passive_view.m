@@ -14,5 +14,6 @@ function passive_view()
 		pause(10);
 		display_anaglyph();
 		pause(0.75);
+		counter = counter + 1;
 	end
 end
