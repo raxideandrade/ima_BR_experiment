@@ -53,7 +53,7 @@ while expt.isrunning && expt.trial <= expt.max_trials
 	end
 	if strcmp(dominant, 'LeftArrow')
 		expt.which_queue = expt.which_queue * 1;
-	else
+	if strcmp(dominant, 'RightArrow')
 		expt.which_queue = expt.which_queue * -1;
 	end
 	run_block();
