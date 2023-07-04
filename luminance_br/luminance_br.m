@@ -52,8 +52,7 @@ while expt.isrunning && expt.reversals <= expt.reversal_threshold && expt.trial 
     % This could be change to hppen every 5 reversals with the mod() function
     if expt.reversals == 7
         expt.lumblue = expt.lumblue_mean;
-		expt.max_lumblue = ?
-		expt.min_lumblue = ?
+		[expt.min_lumblue, expt.max_lumblue] = findNearestValues(expt.lumblue_arr)
     end
 
     if update
