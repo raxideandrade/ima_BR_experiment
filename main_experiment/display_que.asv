@@ -3,15 +3,20 @@ function display_que()
     global expt
     global win
 
-    win.centerX = win.windowRect(3) / 2;
-    win.centerY = win.windowRect(4) / 2;
+% Calculate the center coordinates
+centerX = win.windowRect(3) / 2;
+centerY = win.windowRect(4) / 2;
+
+% % Provide the center coordinates to the DrawFormattedText function
+% DrawFormattedText(win.window, ['B\n \n \n'], centerX, centerY, [255 255 255]);
+
 
 
     if expt.which_anaglyph == 1
         if expt.which_queue == 1
-            DrawFormattedText(win.window, ['B\n \n \n'], win.centerX , win.centerY , [255 255 255]);
+            DrawFormattedText(win.window, ['B\n \n \n'], centerX, centerY, [255 255 255]);
         elseif expt.which_queue == 2
-            DrawFormattedText(win.window, ['M \n \n \n'], win.centerX , win.centerY , [255 255 255]);
+            DrawFormattedText(win.window, ['M \n \n \n'], centerX, centerY, [255 255 255]);
         end
     elseif expt.which_anaglyph == 2
         if expt.which_queue == 1
@@ -21,9 +26,9 @@ function display_que()
         end
     elseif expt.which_anaglyph == 3
         if expt.which_queue == 1
-            DrawFormattedText(win.window, ['FIIIIIIILLLL IT \n \n \n'], centerX, centerY, [255 255 255]);
+            DrawFormattedText(win.window, ['FIIIIIIILLLL IT \n \n \n'], 'center', 'center', [255 255 255]);
         elseif expt.which_queue == 2
-            DrawFormattedText(win.window, ['FIIIIIIILLLL IT \n \n \n'], centerX, centerY, [255 255 255]);
+            DrawFormattedText(win.window, ['FIIIIIIILLLL IT \n \n \n'], 'center', 'center', [255 255 255]);
         end
     end
    Screen('Flip', win.window);%updates the screen 

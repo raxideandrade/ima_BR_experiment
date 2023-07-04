@@ -57,7 +57,7 @@ while expt.isrunning && expt.trial <= expt.max_trials
  % Subject rates vividness. Experiment pauses until valid input
     elseif stage == 3
         while ~any(strcmp(vividness,{'1!','2@','3#','4$'}))
-            DrawFormattedText(win.window, ['Rate Vividness \n \n \n 1 = low 2 = moderate 3 = elevated 4 = high \n \n \n'], 'center', 'center', [255 255 255]);
+            DrawFormattedText(win.window, ['Rate Vividness \n \n  1 = low 2 = moderate 3 = elevated 4 = high \n \n \n'], 'center', 'center', [255 255 255]);
             Screen('Flip', win.window);%updates the screen 
 %             pause; % Wait for keypress
             [vividness, wasKeyDown] = response(wasKeyDown);
@@ -79,7 +79,7 @@ while expt.isrunning && expt.trial <= expt.max_trials
         end
         vividness = 0;
         dominant = 0;
-        pause(4); % Wait 2 seconds before next trial
+%         pause(4); % Wait 2 seconds before next trial
         counter = counter + 1;
         expt.trial = expt.trial + 1;
     elseif stage == 6
@@ -89,7 +89,7 @@ while expt.isrunning && expt.trial <= expt.max_trials
         stage = 0;
     end
     stage = stage + 1;
-    save(fullfile('output', ['data_', num2str(expt.subject), '.mat']), 'data');
+    save(fullfile('output', ['BR_', num2str(expt.subject), '.mat']), 'data');
 
   
 end

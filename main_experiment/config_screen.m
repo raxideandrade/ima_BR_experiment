@@ -54,4 +54,9 @@ function config_screen()
     win.frame_pos = [win.stimulus_pos(1) - win.frame_size, win.stimulus_pos(2) - win.frame_size, win.stimulus_pos(3) + win.frame_size, win.stimulus_pos(4) + win.frame_size];
     win.pix_size = win.moni_width / win.xpixels;
     win.dis_2_moni = 570; % Distance to monitor in mm
+    % Calculate the center coordinates
+    win.centerX = win.windowRect(3) / 2;
+    win.centerY = win.windowRect(4) / 2;
+
+
 end
