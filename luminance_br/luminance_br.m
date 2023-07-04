@@ -26,6 +26,7 @@ expt.lumblue = 0.4;
 expt.max_lumblue = 5; % Max possible value. Will be modified after 7th reversal
 expt.min_lumblue = 0; % Min possible value. Will be modified after 7th reversal
 expt.lumblue_arr = []; % Array to store lumblue values when a reversal happens
+expt.correct_lumblue = true;
 expt.mixed_arr = []; % Array to store lumblue values when subject votes 'mixed'
 expt.mixed_votes = 0; % For indexing results
 expt.step_size = 0.5; % Update luminance by n percent
@@ -50,9 +51,10 @@ while expt.isrunning && expt.reversals <= expt.reversal_threshold && expt.trial 
     save('output/luminance_s.mat', 'expt',"-mat");
     % If n reversals set lumblue to its average so far in order to increase accuracy.
     % This could be change to hppen every 5 reversals with the mod() function
-    if expt.reversals == 7
+    if expt.reversals == 7 && expt.correct_lumblue
         expt.lumblue = expt.lumblue_mean;
 		[expt.min_lumblue, expt.max_lumblue] = findNearestValues(expt.lumblue_arr)
+		expt.correct_lumblue = false;
     end
 
     if update
