@@ -51,11 +51,11 @@ while expt.isrunning && expt.trial <= expt.max_trials
 		% Wait for keypress
 		[dominant, wasKeyDown] = response(wasKeyDown);
 	end
-	if strcmp(dominant, 'LeftArrow')
+    if strcmp(dominant, 'LeftArrow')
 		expt.which_queue = expt.which_queue * 1;
-	if strcmp(dominant, 'RightArrow')
+    elseif strcmp(dominant, 'RightArrow')
 		expt.which_queue = expt.which_queue * -1;
-	end
+    end 
 	run_block();
 	display_instructions();
 	% Reverse que

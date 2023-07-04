@@ -15,7 +15,7 @@ vividness = '';
 		if stage == 1
 			display_que(); % Display que according to which_queue
 			pause(expt.event_dur(stage));  
-			data(counter).queue = expt.which_queue;
+			data(block_counter).queue = expt.which_queue;
 
 		elseif stage == 2
 			  display_frame();
@@ -28,7 +28,7 @@ vividness = '';
 				Screen('Flip', win.window);%updates the screen 
 	%             pause; % Wait for keypress
 				[vividness, wasKeyDown] = response(wasKeyDown);
-				data(counter).vividness = vividness;
+				data(block_counter).vividness = vividness;
 
 			end
 	  % Display anaglyph according to which_anaglyph
@@ -42,11 +42,11 @@ vividness = '';
 				Screen('Flip', win.window);%updates the screen 
 				% Wait for keypress
 				[dominant, wasKeyDown] = response(wasKeyDown);
-				data(counter).dominant = dominant;
+				data(block_counter).dominant = dominant;
 			end
 			vividness = 0;
 			dominant = 0;
-			counter = counter + 1;
+			block_counter = block_counter + 1;
 			expt.trial = expt.trial + 1;
 			stage = 0;
 		end
