@@ -1,0 +1,9 @@
+function [valorDerecho, valorIzquierdo] = findNearestValues(vector)
+    media = mean(vector);  % Calcular la media del vector
+    valoresDiferencia = vector - media;  % Calcular las diferencias con respecto a la media
+    valoresDerecha = valoresDiferencia(valoresDiferencia > 0);  % Filtrar los valores en el lado derecho
+    valoresIzquierda = valoresDiferencia(valoresDiferencia < 0);  % Filtrar los valores en el lado izquierdo
+    valorDerecho = min(valoresDerecha);  % Obtener el valor más cercano en el lado derecho
+    valorIzquierdo = max(valoresIzquierda);  % Obtener el valor más cercano en el lado izquierdo
+end
+end
