@@ -21,7 +21,7 @@ expt.key = ''; % Exmpty string to store key pressed
 expt.state = 0; % keep track of the current state of the response keyboard
 
 expt.event_dur = [1 7 0 0.75]; % Duration of four steps
-expt.max_trials = 100;
+expt.max_trials = 10;
 expt.isrunning = true;
 expt.trial = 1;
 expt.which_anaglyph = 1; % Variable to indicate which anaglyph, background
