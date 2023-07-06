@@ -20,7 +20,6 @@ expt.state = 0; % keep track of the current state of the response keyboard
 expt.event_dur = [1 7 0 0.75]; % Duration of four steps
 expt.max_trials = 360;
 expt.block_size = 1;
-expt.block_count = 1; % Count blocks
 expt.trial = 1;
 expt.passive_view_arr_1 = [];
 expt.passive_view_arr_2 = [];
@@ -40,8 +39,7 @@ Screen('Preference', 'SkipSyncTests', 1);
 create_subject_data();
 config_screen();
 load_images();
-display_instructions();
-
+block_count = 1; % Count blocks
 event_order = [1, 2, 3];
 
 while expt.isrunning && block_count <= 12

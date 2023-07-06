@@ -15,7 +15,7 @@ function run_secuence(event)
 		pause(0.75);
 		% Subject chooses dominant
 		while ~strcmp(dominant, 'LeftArrow') && ~strcmp(dominant, 'RightArrow') && ~strcmp(dominant, 'DownArrow')
-			DrawFormattedText(win.window, ['Choose Dominant \n \n \n'], 'center', 'center', [255 255 255]);
+			Screen('FillRect', win.window, [0 0 0])
 			Screen('Flip', win.window);%updates the screen 
 			% Wait for keypress
 			[dominant, wasKeyDown] = response(wasKeyDown);
