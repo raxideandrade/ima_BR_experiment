@@ -3,8 +3,8 @@ function display_instructions(event)
     global win
     
     % Load the images
-    image1 = imread('merkel.png'); 
-    image2 = imread('tor.png'); 
+    image1 = imread('red_merkel.png'); 
+    image2 = imread('cyan_tor.png'); 
     image1 = imresize(image1,[NaN expt.display_size]); 
     image2 = imresize(image2,[NaN expt.display_size]); 
    
@@ -54,7 +54,7 @@ elseif event == 2
         '\n\n Fixate on the fixation cross during the whole experiment' ...
         '\n\n\nPress the space bar to start'], 'center', 'center', [255 255 255], [], [], [], [], [], instructionRect);
 elseif event == 3
-    DrawFormattedText(win.window, ['Select the dominant image and abstain from imagining anything' ...
+    DrawFormattedText(win.window, ['When observing image select a the dominant and avoid to imagine anything ' ...
         '\n\n Left arrow = Brandenburg Tor Down arrow =Mixed  Right arrow = Angela Merkel' ...
         '\n\n Fixate on the fixation cross during the whole experiment' ...
         '\n\n\nPress the space bar to start'], 'center', 'center', [255 255 255], [], [], [], [], [], instructionRect);

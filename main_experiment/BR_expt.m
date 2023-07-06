@@ -42,15 +42,17 @@ load_images();
 block_count = 1; % Count blocks
 event_order = [1, 2, 3];
 
-while expt.isrunning && block_count <= 4
+while expt.isrunning && block_count <= 2
 	event_order = event_order(randperm(length(event_order)));
 	i = 1;
 	while i <= 3
 		display_instructions(event_order(i));
 		run_secuence(event_order(i));
 		i = i + 1;
-	end
+    end
+    i = 1;
 	block_count = block_count + 1;
+	display_instructions(4);
 end
 %{
 % Experiment main loop
