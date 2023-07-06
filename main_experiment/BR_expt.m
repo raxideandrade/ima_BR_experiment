@@ -42,7 +42,7 @@ load_images();
 block_count = 1; % Count blocks
 event_order = [1, 2, 3];
 
-while expt.isrunning && block_count <= 4 
+while expt.isrunning && block_count <= 4
 	event_order = event_order(randperm(length(event_order)));
 	i = 1;
 	while i <= 3

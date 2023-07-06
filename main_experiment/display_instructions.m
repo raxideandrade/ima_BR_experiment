@@ -63,7 +63,8 @@ win.vbl = Screen('Flip', win.window);
 win.ifi = Screen('GetFlipInterval', win.window);
 win.hertz = FrameRate(win.window);
 %% Run instructions until spacebar pressed
-while ~strcmp(expt.key, "space")
-	[expt.key, expt.state] = response(expt.state);
+key = '';
+while ~strcmp(key, "space")
+	[key, expt.state] = response(expt.state);
 	drawnow  % Force screen update
 end
