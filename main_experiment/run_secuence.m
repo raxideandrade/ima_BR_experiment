@@ -21,7 +21,7 @@ function run_secuence(event)
 			[dominant, wasKeyDown] = response(wasKeyDown);
 		end
 		% Display cross for pasice and frame for others
-		if event = 3
+		if event == 3
 			display_cross();
 		else
 			display_frame();

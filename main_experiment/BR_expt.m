@@ -42,14 +42,14 @@ config_screen();
 load_images();
 display_instructions();
 
-event_order = [1, 2, 3]
+event_order = [1, 2, 3];
 
 while expt.isrunning && block_count <= 12
-	% randomize event_order
+	event_order = event_order(randperm(length(event_order)));
 	i = 1;
 	while i <= 3
-		display_instructions(event_order[i]);
-		run_secuence(event_order[i]);
+		display_instructions(event_order(i));
+		run_secuence(event_order(i));
 		i = i + 1;
 	end
 	block_count = block_count + 1;
