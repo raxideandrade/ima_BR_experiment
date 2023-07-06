@@ -18,8 +18,9 @@ expt.key = ''; % Exmpty string to store key pressed
 expt.state = 0; % keep track of the current state of the response keyboard
 
 expt.event_dur = [1 7 0 0.75]; % Duration of four steps
-expt.max_trials = 120;
+expt.max_trials = 360;
 expt.block_size = 1;
+expt.block_count = 1; % Count blocks
 expt.trial = 1;
 expt.passive_view_arr_1 = [];
 expt.passive_view_arr_2 = [];
@@ -41,8 +42,19 @@ config_screen();
 load_images();
 display_instructions();
 
+event_order = [1, 2, 3]
 
-
+while expt.isrunning && block_count <= 12
+	% randomize event_order
+	i = 1;
+	while i <= 3
+		display_instructions(event_order[i]);
+		run_secuence(event_order[i]);
+		i = i + 1;
+	end
+	block_count = block_count + 1;
+end
+%{
 % Experiment main loop
 while expt.isrunning && expt.trial <= expt.max_trials
 	display_anaglyph();
@@ -71,5 +83,6 @@ while expt.isrunning && expt.trial <= expt.max_trials
     display_instructions();
     pause();
 end
+%}
 sca
  
