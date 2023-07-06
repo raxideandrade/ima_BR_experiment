@@ -44,7 +44,6 @@ y2 = y1 + textHeight;
 instructionRect = [x1, y1, x2, y2];
 
 if event == 1
-
     DrawFormattedText(win.window, ['When observing image select a the dominant and try to imagine the DOMINANT' ...
         '\n\n Left arrow = Brandenburg Tor Down arrow =Mixed  Right arrow = Angela Merkel' ...
         '\n\n Fixate on the fixation cross during the whole experiment' ...
@@ -54,18 +53,17 @@ elseif event == 2
         '\n\n Left arrow = Brandenburg Tor Down arrow =Mixed  Right arrow = Angela Merkel' ...
         '\n\n Fixate on the fixation cross during the whole experiment' ...
         '\n\n\nPress the space bar to start'], 'center', 'center', [255 255 255], [], [], [], [], [], instructionRect);
-   
 elseif event == 3
     DrawFormattedText(win.window, ['When observing image select a the dominant and avoid to imagine anything ' ...
         '\n\n Left arrow = Brandenburg Tor Down arrow =Mixed  Right arrow = Angela Merkel' ...
         '\n\n Fixate on the fixation cross during the whole experiment' ...
         '\n\n\nPress the space bar to start'], 'center', 'center', [255 255 255], [], [], [], [], [], instructionRect);
-    win.vbl = Screen('Flip', win.window);
-    win.ifi = Screen('GetFlipInterval', win.window);
-    win.hertz = FrameRate(win.window);
-    %% Run instructions until spacebar pressed
-    while ~strcmp(expt.key, "space")
-        [expt.key, expt.state] = response(expt.state);
-        drawnow  % Force screen update
-    end
+end
+win.vbl = Screen('Flip', win.window);
+win.ifi = Screen('GetFlipInterval', win.window);
+win.hertz = FrameRate(win.window);
+%% Run instructions until spacebar pressed
+while ~strcmp(expt.key, "space")
+	[expt.key, expt.state] = response(expt.state);
+	drawnow  % Force screen update
 end
