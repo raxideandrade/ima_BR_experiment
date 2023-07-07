@@ -36,12 +36,13 @@ function run_secuence(event)
 			Screen('Flip', win.window);%updates the screen 
 %             pause; % Wait for keypress
 			[vividness, wasKeyDown] = response(wasKeyDown);
-		end
-		data(expt.counter).vividness = vividness;
-
+            
+        end
+        data(expt.trial).vividness = vividness;
 		expt.trial = expt.trial + 1;
 		counter = counter + 1;
         dominant = '';
         vividness = '';
+        save(fullfile('output', ['BR_', num2str(expt.subject), '.mat']), 'data');
 	end
 end

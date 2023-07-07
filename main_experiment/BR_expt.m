@@ -1,4 +1,4 @@
-% Global variables
+ % Global variables
 global data 
 global expt 
 global win
@@ -29,8 +29,7 @@ expt.which_queue = 1;  % Variable to indicate wether to show back or foreground
 % with random 1-2
 expt.display_size = visual_angle2pixel(4, 24, 64, 0);
 % experiment conditions using a formula
-expt.lumblue_1 = 1.52; %change for the luminance value of the subject
-
+expt.lumblue_1 = 0.75  ; %change for the luminance value of the subject
 %% Functions path
 addpath(pwd);
 
@@ -54,35 +53,6 @@ while expt.isrunning && block_count <= 2
 	block_count = block_count + 1;
 	display_instructions(4);
 end
-%{
-% Experiment main loop
-while expt.isrunning && expt.trial <= expt.max_trials
-	display_anaglyph();
-    pause(2);
-	while ~strcmp(dominant, 'LeftArrow') && ~strcmp(dominant, 'RightArrow') && ~strcmp(dominant, 'DownArrow')
-		DrawFormattedText(win.window, ['Choose Dominant \n \n \n'], 'center', 'center', [255 255 255]);
-		Screen('Flip', win.window);%updates the screen 
-		% Wait for keypress
-		[dominant, wasKeyDown] = response(wasKeyDown);
-	end
-    if strcmp(dominant, 'LeftArrow')
-		expt.which_queue = expt.which_queue * 1;
-    elseif strcmp(dominant, 'RightArrow')
-		expt.which_queue = expt.which_queue * -1;
-    end
-    pause(2);
-	run_block();
-	display_instructions();
-    pause();
-	% Reverse que
-	expt.which_queue = expt.which_queue * -1;
-	run_block();
-	display_instructions();
-    pause();
-	passive_view();
-    display_instructions();
-    pause();
-end
-%}
+
 sca
  

@@ -55,6 +55,13 @@ while expt.isrunning && expt.reversals <= expt.reversal_threshold && expt.trial 
         expt.lumblue = expt.lumblue_mean;
 		[expt.min_lumblue, expt.max_lumblue] = findNearestValues(expt.lumblue_arr)
 		expt.correct_lumblue = false;
+
+        if expt.lumblue_mean > 0.4
+            expt.step_size = 0.3;
+        end
+        if expt.lumblue_mean < 0.4
+            expt.step_size = 0.8 ;
+        end
     end
 
     if update
@@ -98,5 +105,6 @@ while expt.isrunning && expt.reversals <= expt.reversal_threshold && expt.trial 
             end
         end
     end
+expt.lumblue_media = median(expt.lumblue_arr);
 end
 sca

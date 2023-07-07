@@ -1,6 +1,8 @@
 function display_instructions(event)
     global expt
     global win
+
+    wasKeyDown = false;
     
     % Load the images
     image1 = imread('merkel.png'); 
@@ -59,14 +61,21 @@ elseif event == 3
         '\n\n Fixate on the fixation cross during the whole experiment' ...
         '\n\n\nPress the space bar to start'], 'center', 'center', [255 255 255], [], [], [], [], [], instructionRect);
 elseif event == 4
-    DrawFormattedText(win.window, ['Press the space bar to start'], 'center', 'center', [255 255 255], [], [], [], [], [], instructionRect);
+    DrawFormattedText(win.window, ['Press the down arrow bar to start'], 'center', 'center', [255 255 255], [], [], [], [], [], instructionRect);
 end
 win.vbl = Screen('Flip', win.window);
 win.ifi = Screen('GetFlipInterval', win.window);
 win.hertz = FrameRate(win.window);
 %% Run instructions until spacebar pressed
 key = '';
-while ~strcmp(key, "space")
-	[key, expt.state] = response(expt.state);
+if event == 4
+    while ~strcmp(key, "DownArrow")
+	[key, wasKeyDown] = response(wasKeyDown);
 	drawnow  % Force screen update
+    end
+else
+    while ~strcmp(key, "space")
+	[key, wasKeyDown] = response(wasKeyDown);
+	drawnow  % Force screen update
+    end
 end
