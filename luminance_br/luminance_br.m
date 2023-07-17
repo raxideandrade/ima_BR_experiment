@@ -106,5 +106,9 @@ while expt.isrunning && expt.reversals <= expt.reversal_threshold && expt.trial 
         end
     end
 expt.lumblue_media = median(expt.lumblue_arr);
+
 end
+expt.luminance_median = median(expt.output(:,2));
+expt.luminance_mean = mean(expt.output(:,2)); 
+
 sca

@@ -28,6 +28,7 @@ function run_secuence(event)
 		end
 		pause(7);
 
+        data(expt.trial).block_count = expt.block_count; 
 		data(expt.trial).queue = queue;
 		data(expt.trial).dominant = dominant;
 		% Subject rates vividness

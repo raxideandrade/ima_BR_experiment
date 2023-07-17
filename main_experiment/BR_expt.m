@@ -29,7 +29,7 @@ expt.which_queue = 1;  % Variable to indicate wether to show back or foreground
 % with random 1-2
 expt.display_size = visual_angle2pixel(4, 24, 64, 0);
 % experiment conditions using a formula
-expt.lumblue_1 = 0.75  ; %change for the luminance value of the subject
+expt.lumblue_1 = 0.58  ; %change for the luminance value of the subject
 %% Functions path
 addpath(pwd);
 
@@ -38,10 +38,10 @@ Screen('Preference', 'SkipSyncTests', 1);
 create_subject_data();
 config_screen();
 load_images();
-block_count = 1; % Count blocks
+expt.block_count = 1; % Count blocks
 event_order = [1, 2, 3];
 
-while expt.isrunning && block_count <= 2
+while expt.isrunning && expt.block_count <= 2
 	event_order = event_order(randperm(length(event_order)));
 	i = 1;
 	while i <= 3
@@ -50,7 +50,7 @@ while expt.isrunning && block_count <= 2
 		i = i + 1;
     end
     i = 1;
-	block_count = block_count + 1;
+	expt.block_count = expt.block_count + 1;
 	display_instructions(4);
 end
 
