@@ -9,13 +9,12 @@ function upd_lum(dominant, pre_dominant)
     global expt;
     
     if strcmp(dominant, pre_dominant)
-        % Check if subject chose same side as before
         if strcmp(dominant, 'LeftArrow')
             % Increase lumblue
-            expt.lumblue = expt.lumblue + (expt.lumblue * expt.step_size)
+            expt.lumblue = expt.lumblue + (expt.lumblue * expt.step_size);
         else
             % Decrease lumblue
-            expt.lumblue = expt.lumblue - (expt.lumblue * expt.step_size)
+            expt.lumblue = expt.lumblue - (expt.lumblue * expt.step_size);
         end
 
 		if expt.lumblue > expt.max_lumblue
@@ -23,5 +22,6 @@ function upd_lum(dominant, pre_dominant)
 		end
 		if expt.lumblue < expt.min_lumblue
 			expt.lumblue = expt.min_lumblue;
+        end
     end
 end

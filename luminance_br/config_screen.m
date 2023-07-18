@@ -28,7 +28,7 @@ function config_screen()
 
     % Open the window on the chosen screen with the specified position and size.
     % Include windowRect as last parameter of Screen() only for debugging
-    [window, windowRect] = Screen('OpenWindow', screenNumber, 0);
+    [window, windowRect] = Screen('OpenWindow', screenNumber, 0,  windowRect);
 
     % Set window transparency
     Screen(window, 'BlendFunction', GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);

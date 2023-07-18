@@ -31,7 +31,7 @@ expt.mixed_arr = []; % Array to store lumblue values when subject votes 'mixed'
 expt.mixed_votes = 0; % For indexing results
 expt.step_size = 0.5; % Update luminance by n percent
 expt.reversals = 0;
-expt.reversal_threshold = 15; % Experimet stops when reac hed
+expt.reversal_threshold = 15; % Experimet stops when reached
 % Display size should be changed according to experiment conditions using a formula
 expt.display_size =  visual_angle2pixel(4,24,64,0);
 
@@ -53,7 +53,7 @@ while expt.isrunning && expt.reversals <= expt.reversal_threshold && expt.trial 
     % This could be change to hppen every 5 reversals with the mod() function
     if expt.reversals == 7 && expt.correct_lumblue
         expt.lumblue = expt.lumblue_mean;
-		[expt.min_lumblue, expt.max_lumblue] = findNearestValues(expt.lumblue_arr)
+		[expt.min_lumblue, expt.max_lumblue] = findNearestValues(expt.lumblue_arr);
 		expt.correct_lumblue = false;
 
         if expt.lumblue_mean > 0.4
@@ -75,6 +75,8 @@ while expt.isrunning && expt.reversals <= expt.reversal_threshold && expt.trial 
         end
         time = upd_screen(stage, dominant, pre_dominant);
         update = false;
+
+        expt.lumblue
     end
 
     if GetSecs - time >= expt.event_dur(stage)
