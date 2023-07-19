@@ -1,3 +1,5 @@
+%% Mock trails
+
 % Global variables
 global data 
 global expt 
@@ -18,7 +20,7 @@ expt.key = ''; % Exmpty string to store key pressed
 expt.state = 0; % keep track of the current state of the response keyboard
 
 expt.event_dur = [1 7 0 0.75]; % Duration of four steps
-expt.block_size = 30;
+expt.block_size = 12;
 expt.trial = 1;
 expt.passive_view_arr_1 = [];
 expt.passive_view_arr_2 = [];
@@ -40,12 +42,12 @@ load_images();
 expt.block_count = 1; % Count blocks
 event_order = [1, 2, 3];
 
-while expt.isrunning && expt.block_count <= 4
+while expt.isrunning && expt.block_count <= 2
 	event_order = event_order(randperm(length(event_order)));
 	i = 1;
 	   while i <= 3
 		display_instructions(event_order(i));
-		run_secuence(event_order(i));
+		run_secuence_mock(event_order(i));
         i = i + 1;
     end
     i = 1;

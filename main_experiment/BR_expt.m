@@ -1,4 +1,4 @@
- % Global variables
+% Global variables
 global data 
 global expt 
 global win

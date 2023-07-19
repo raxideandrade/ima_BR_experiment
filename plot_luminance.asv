@@ -169,12 +169,6 @@ figure; plot(expt.output(:,2))
 %% Bar Plot Br responses 
 
 indx = find([data.queue] == 2);
-condi_1 = {};
+condi_1 = zeros(size(indx));
 
-for i = 1:numel(indx)
-    index = indx(i);
-    condi_1{i} = data(index).dominant;
-end
-
-
-condi_1 = string(condi_1);
+for i
