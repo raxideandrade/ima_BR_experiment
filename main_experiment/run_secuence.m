@@ -9,7 +9,7 @@ function run_secuence(event)
 	vividness = '';
 	wasKeyDown = false;
 
-	while expt.isrunning && counter <= 1
+	while expt.isrunning && counter <= expt.block_size
 		display_anaglyph();
 		pause(0.75);
 		% Subject chooses dominant

@@ -1,3 +1,9 @@
+%% STAIRCASE EXAMPL 2: 
+%update luminance every response 
+%UPDATE STEP SIZE 0.3
+%calculates 3 different types of mean and median 1)from lumblu_reversals last values,2) lumblue and
+%3)reversals values
+
  %% Experimentt variables
 clear all
 
@@ -49,27 +55,28 @@ anaglyph_image(); % Create anaglyph, fore and background textures
 %% Experiment loop
 while expt.isrunning && expt.reversals <= expt.reversal_threshold && expt.trial <= expt.max_trials  
     
+
     expt.lumblue_mean = mean(expt.lumblue_arr);
     save(fullfile('output', ['luminance_', num2str(expt.subject), '.mat']), 'expt');
 %     save('output/luminance_s.mat', 'expt',"-mat");
     % If n reversals set lumblue to its average so far in order to increase accuracy.
-    % This could be change to hppen every 5 reversals with the mod() function
+    % This could be change to hppen every 7 reversals with the mod() function
     if expt.reversals == 7 && expt.correct_lumblue
         expt.lumblue = expt.lumblue_mean;
 		[expt.min_lumblue, expt.max_lumblue] = findNearestValues(expt.lumblue_arr);
 		expt.correct_lumblue = false;
 
         if expt.lumblue_mean > 0.4
-            expt.step_size = 0.3;
+            expt.step_size = 0.1;
         end
         if expt.lumblue_mean < 0.4
-            expt.step_size = 0.8 ;
+            expt.step_size = 0.1 ;
         end
     end
 
     if update
         if stage == 4 && update == true
-            upd_lum(dominant, pre_dominant);
+            EXP2_upd_lum(dominant, pre_dominant);
             pre_dominant = dominant;
             expt.trial = expt.trial + 1;
             stage = 1;
@@ -78,8 +85,9 @@ while expt.isrunning && expt.reversals <= expt.reversal_threshold && expt.trial 
         end
         time = upd_screen(stage, dominant, pre_dominant);
         update = false;
-
+        %Print lumblue value for debugging 
         expt.lumblue
+        
     end
 
     if GetSecs - time >= expt.event_dur(stage)
@@ -96,10 +104,10 @@ while expt.isrunning && expt.reversals <= expt.reversal_threshold && expt.trial 
                     expt.mixed_arr(expt.mixed_votes) = expt.lumblue;
                     dominant = pre_dominant;
                 end
-
-                expt.output(expt.trial, :) = [strcmp(dominant, 'LeftArrow') expt.lumblue]; % Store values
-                lum_output(expt.trial).block_count = expt.block_count; 
-
+                expt.output(expt.trial, :) = [strcmp(dominant, 'LeftArrow') expt.lumblue];
+                lum_output(expt.trial).dominant = strcmp(dominant, 'LeftArrow') ;
+                lum_output(expt.trial).lum_blue = expt.lumblue;
+                lum_output(expt.trial).response = expt.k;
 
                 % Check for reversals
                 if strcmp(dominant, pre_dominant) ~= 1 && strcmp(pre_dominant, '') ~= 1
@@ -117,5 +125,16 @@ expt.lumblue_media = median(expt.lumblue_arr);
 end
 expt.luminance_median = median(expt.output(:,2));
 expt.luminance_mean = mean(expt.output(:,2)); 
+
+figure; plot(expt.output(:,2))
+
+% Calculate the index where the last half of the array starts
+last_half_index = floor(numel(expt.lumblue_arr) / 2) + 1;
+
+% Extract the last half of the array using array indexing
+last_half_values = expt.lumblue_arr(last_half_index:end);
+
+% Calculate the mean of the last half of the values
+expt.lumblue_mean_last_val = mean(last_half_values);
 
 sca

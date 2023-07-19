@@ -159,8 +159,9 @@ ylabel('lumblue');
 title('Luminance blue vs. Trial Number');
 
 
-%% PLOT luminance and 
+%% PLOT luminance 
 
+figure; histogram(expt.output(:,2),20)
 
-
+figure; plot(expt.output(:,2))
 

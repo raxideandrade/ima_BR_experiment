@@ -18,7 +18,8 @@ expt.key = ''; % Exmpty string to store key pressed
 expt.state = 0; % keep track of the current state of the response keyboard
 
 expt.event_dur = [1 7 0 0.75]; % Duration of four steps
-expt.block_size = 30;
+expt.max_trials = 360;
+expt.block_size = 90;
 expt.trial = 1;
 expt.passive_view_arr_1 = [];
 expt.passive_view_arr_2 = [];
