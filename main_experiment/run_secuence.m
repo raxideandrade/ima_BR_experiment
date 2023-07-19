@@ -3,7 +3,6 @@ function run_secuence(event)
 	global expt
 	global win
 	
-	secuence = 1;
 	queue = event;
 	counter = 1;
 	dominant = '';
@@ -15,18 +14,13 @@ function run_secuence(event)
 		pause(0.75);
 		% Subject chooses dominant
 		while ~strcmp(dominant, 'LeftArrow') && ~strcmp(dominant, 'RightArrow') && ~strcmp(dominant, 'DownArrow')
-			Screen('FillRect', win.window, [0 0 0])
-			Screen('Flip', win.window);%updates the screen 
+            display_cross
 			% Wait for keypress
 			[dominant, wasKeyDown] = response(wasKeyDown);
 		end
-		% Display cross for pasice and frame for others
-		if event == 3
-			display_cross();
-		else
-			display_frame();
-		end
-		pause(7);
+
+		display_frame();
+        pause(7);
 
         data(expt.trial).block_count = expt.block_count; 
 		data(expt.trial).queue = queue;

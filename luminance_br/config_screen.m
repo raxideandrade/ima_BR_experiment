@@ -33,6 +33,9 @@ function config_screen()
     % Set window transparency
     Screen(window, 'BlendFunction', GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
+    % Hide the cursor 
+    HideCursor;
+
     if screenNumber == 0
         win.moni_width = 345;
     else

@@ -25,12 +25,11 @@ function run_block()
 	 % Subject rates vividness. Experiment pauses until valid input
 		elseif stage == 3
 			while ~any(strcmp(vividness,{'1!','2@','3#','4$'}))
-				DrawFormattedText(win.window, ['Rate Vividness \n \n  1 = low 2 = moderate 3 = elevated 4 = high \n \n \n'], 'center', 'center', [255 255 255]);
+				DrawFormattedText(win.window, ['Rate Vividness...' ...
+                    '\n \n  1 = low 2 = moderate 3 = elevated 4 = high \n \n \n'], 'center', 'center', [255 255 255]);
 				Screen('Flip', win.window);%updates the screen 
-	%             pause; % Wait for keypress
 				[vividness, wasKeyDown] = response(wasKeyDown);
 				data(expt.counter).vividness = vividness;
-
 			end
 	  % Display anaglyph according to which_anaglyph
 		elseif stage == 4

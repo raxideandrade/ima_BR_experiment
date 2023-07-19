@@ -78,9 +78,8 @@ while expt.isrunning && expt.reversals <= expt.reversal_threshold && expt.trial 
         end
         time = upd_screen(stage, dominant, pre_dominant);
         update = false;
-        %Print lumblue value for debugging 
+
         expt.lumblue
-        
     end
 
     if GetSecs - time >= expt.event_dur(stage)
@@ -98,9 +97,9 @@ while expt.isrunning && expt.reversals <= expt.reversal_threshold && expt.trial 
                     dominant = pre_dominant;
                 end
 
-                lum_output(expt.trial).dominant = strcmp(dominant, 'LeftArrow') ;
-                lum_output(expt.trial).lum_blue = expt.lumblue;
-                lum_output(expt.trial).response = expt.k;
+                expt.output(expt.trial, :) = [strcmp(dominant, 'LeftArrow') expt.lumblue]; % Store values
+                lum_output(expt.trial).block_count = expt.block_count; 
+
 
                 % Check for reversals
                 if strcmp(dominant, pre_dominant) ~= 1 && strcmp(pre_dominant, '') ~= 1

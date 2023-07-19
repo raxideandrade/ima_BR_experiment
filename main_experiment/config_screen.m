@@ -22,16 +22,20 @@ function config_screen()
     % Choose the screen you want to draw on (e.g., the second screen)
     screenNumber = max(screens);
     AssertOpenGL;
+    
 
     % Specify the position and size of the window. For debugging.
     win.windowRect = [0 0 800 600];  % Adjust the values as needed
 
     % Open the window on the chosen screen with the specified position and size.
     % Include windowRect as last parameter of Screen() only for debugging
-    [window, win.windowRect] = Screen('OpenWindow', screenNumber, 0);
+    [window, win.windowRect] = Screen('OpenWindow', screenNumber, 0,win.windowRect);
 
     % Set window transparency
     Screen(window, 'BlendFunction', GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+
+    % Hide the cursor 
+    HideCursor;
 
     if screenNumber == 0
         win.moni_width = 345;

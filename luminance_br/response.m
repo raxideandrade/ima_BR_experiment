@@ -14,7 +14,7 @@ function [k, wasKeyDown] = response(wasKeyDown)
     end
     
     if ~wasKeyDown && isKeyDown
-        
+        expt.k=k;
         wasKeyDown = 1;
     end
     
