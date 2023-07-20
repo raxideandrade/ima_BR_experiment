@@ -1,4 +1,4 @@
-% Global variables
+ % Global variables
 global data 
 global expt 
 global win
@@ -18,7 +18,7 @@ expt.key = ''; % Exmpty string to store key pressed
 expt.state = 0; % keep track of the current state of the response keyboard
 
 expt.event_dur = [1 7 0 0.75]; % Duration of four steps
-expt.block_size = 30;
+expt.block_size = 1; %the number of trials on each block 
 expt.trial = 1;
 expt.passive_view_arr_1 = [];
 expt.passive_view_arr_2 = [];
@@ -40,8 +40,8 @@ load_images();
 expt.block_count = 1; % Count blocks
 event_order = [1, 2, 3];
 
-while expt.isrunning && expt.block_count <= 4
-	event_order = event_order(randperm(length(event_order)));
+while expt.isrunning && expt.block_count <= 2 % the number of runings 
+	event_order = event_order(randperm(length(event_order)))
 	i = 1;
 	   while i <= 3
 		display_instructions(event_order(i));
