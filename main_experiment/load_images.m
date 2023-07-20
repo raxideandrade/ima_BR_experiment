@@ -8,12 +8,12 @@ function load_images()
     global win
 
     % Load the first background image
-    expt.backgroundImage_1 = imread('cyan_tor.png'); % red_merkel.jpg
+    expt.backgroundImage_1 = imread('cyan_tor_50.png'); % red_merkel.jpg
     expt.backgroundImage_1 = imresize(expt.backgroundImage_1, [NaN expt.display_size]); 
     expt.backgroundImage_1_text = Screen('MakeTexture', win.window, expt.backgroundImage_1 );
 
     % Load the first foreground image
-    expt.foregroundImage_1 = imread('red_merkel.png'); % cyan_tor.jpg
+    expt.foregroundImage_1 = imread('red_merkel_50.png'); % cyan_tor.jpg
     expt.foregroundImage_1 = imresize(expt.foregroundImage_1, [NaN expt.display_size]); 
     expt.foregroundImage_1_text = Screen('Maketexture', win.window, expt.foregroundImage_1);
    
