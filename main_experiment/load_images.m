@@ -40,7 +40,7 @@ function load_images()
     expt.mock_image = cat(3, expt.backgroundImage_1(:, :, 1), expt.foregroundImage_1 (:, :, 2:3));
 
     % Create a texture from the anaglyph mock imagea
-    expt.mock_image(:,:,2:3) = expt.anaglyph_1(:,:,2:3)*expt.lumblue_mock;
+    expt.mock_image(:,:,2:3) = expt.mock_image(:,:,2:3)*expt.lumblue_mock;
     expt.anaglyph_mock_text = Screen('MakeTexture', win.window, expt.mock_image);
 
 
