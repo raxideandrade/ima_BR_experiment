@@ -15,7 +15,7 @@ function run_secuence(event)
 	mock_counter = 1;
 
 	while expt.isrunning && counter <= expt.block_size
-		if rem(assign_mock(mock_counter), 5) == 0
+		if assign_mock(mock_counter) == 5
 			expt.which_anaglyph = 2
 		else
 			expt.display_anaglyph = 1
