@@ -9,12 +9,13 @@ function run_secuence(event)
 	vividness = '';
 	wasKeyDown = false;
 
-	assign_mock = (1:34);
-	assign_mock = assign_mock(randperm(length(assign_mock)));
+	assign_mock = (1:5)
+	assign_mock = assign_mock(randperm(length(assign_mock)))
+    expt.mock_arra = assign_mock
 	mock_counter = 1;
 
 	while expt.isrunning && counter <= expt.block_size
-		if mod(assign_mock(mock_counter), 5) == 0
+		if rem(assign_mock(mock_counter), 5) == 0
 			expt.which_anaglyph = 2
 		else
 			expt.display_anaglyph = 1
