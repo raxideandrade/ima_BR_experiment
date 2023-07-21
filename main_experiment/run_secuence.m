@@ -36,6 +36,7 @@ function run_secuence(event)
         data(expt.trial).block_count = expt.block_count; 
 		data(expt.trial).queue = queue;
 		data(expt.trial).dominant = dominant;
+		data(expt.trial).which_anaglyph = expt.which_anaglyph;
 		% Subject rates vividness
 		while ~any(strcmp(vividness,{'1!','2@','3#','4$'}))
 			DrawFormattedText(win.window, ['Rate Vividness \n \n  1 = low 2 = moderate 3 = elevated 4 = high \n \n \n'], 'center', 'center', [255 255 255]);
