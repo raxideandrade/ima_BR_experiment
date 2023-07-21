@@ -9,7 +9,7 @@ function run_secuence(event)
 	vividness = '';
 	wasKeyDown = false;
 
-	assign_mock = [1:30];
+	assign_mock = (1:34);
 	assign_mock = assign_mock(randperm(length(assign_mock)));
 	mock_counter = 1;
 
