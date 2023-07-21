@@ -6,7 +6,7 @@ function display_anaglyph()
         Screen('DrawTexture', win.window, expt.anaglyph_1_text);
         
     elseif expt.which_anaglyph == 2
-        Screen('DrawTexture', win.window, expt.anaglyph_mock);
+        Screen('DrawTexture', win.window, expt.anaglyph_mock_text);
     elseif expt.which_anaglyph == 3
         Screen('DrawTexture', win.window, expt.anaglyph_3_text);
          
