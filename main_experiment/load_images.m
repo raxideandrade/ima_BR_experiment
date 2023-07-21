@@ -37,7 +37,7 @@ function load_images()
     expt.foregroundMock_text = Screen('Maketexture', win.window, expt.foregroundMock);
    
     % Combine the two images into a single anaglyph image
-    expt.mock_image = cat(3, expt.backgroundImage_1(:, :, 1), expt.foregroundImage_1 (:, :, 2:3));
+    expt.mock_image = cat(3, expt.backgroundMock(:, :, 1), expt.foregroundMock (:, :, 2:3));
 
     % Create a texture from the anaglyph mock imagea
     expt.mock_image(:,:,2:3) = expt.mock_image(:,:,2:3)*expt.lumblue_mock;
