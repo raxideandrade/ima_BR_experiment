@@ -1,4 +1,4 @@
- % Global variables
+  % Global variables
 global data 
 global expt 
 global win
@@ -18,7 +18,7 @@ expt.key = ''; % Exmpty string to store key pressed
 expt.state = 0; % keep track of the current state of the response keyboard
 
 expt.event_dur = [1 7 0 0.75]; % Duration of four steps
-expt.block_size = 5 ; %the number of trials on each block 
+expt.block_size = 30 ; %the number of trials on each block 
 expt.trial = 1;
 expt.passive_view_arr_1 = [];
 expt.passive_view_arr_2 = [];
