@@ -1,4 +1,4 @@
-function load_images()
+function load_images_75()
      % This function loads all required images and creares
      % corresponding anaglyphs
         
@@ -8,7 +8,7 @@ function load_images()
 
     
     % Load the first background image
-    expt.backgroundImage_1 = imread('cyan_tor.png'); % red_merkel.jpg
+    expt.backgroundImage_1 = imread('cyan_tor_75.png'); % red_merkel.jpg
     expt.backgroundImage_1 = imresize(expt.backgroundImage_1, [NaN expt.display_size]); 
     expt.backgroundImage_1_text = Screen('MakeTexture', win.window, expt.backgroundImage_1 );
 
@@ -29,7 +29,6 @@ function load_images()
     Screen('DrawLine', win.window, [255 255 255], win.xc - 5, win.yc - 5, win.xc + 5, win.yc + 5, 3); %two white lines that intersect at the center of the screen
     Screen('DrawLine', win.window, [255 255 255], win.xc - 5, win.yc + 5, win.xc + 5, win.yc - 5, 3);%creating a fixation cross.
     Screen('Flip', win.window); % Updates the screen 
-
 end
 
 

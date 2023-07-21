@@ -1,4 +1,4 @@
-function load_images()
+function load_images_50()
      % This function loads all required images and creares
      % corresponding anaglyphs
         
@@ -8,7 +8,7 @@ function load_images()
 
     
     % Load the first background image
-    expt.backgroundImage_1 = imread('cyan_tor.png'); % red_merkel.jpg
+    expt.backgroundImage_1 = imread('cyan_tor_50.png'); % red_merkel.jpg
     expt.backgroundImage_1 = imresize(expt.backgroundImage_1, [NaN expt.display_size]); 
     expt.backgroundImage_1_text = Screen('MakeTexture', win.window, expt.backgroundImage_1 );
 
