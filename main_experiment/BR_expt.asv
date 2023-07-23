@@ -48,7 +48,7 @@ while expt.isrunning && expt.block_count <= 4 % the number of runings
 		display_instructions(event_order(i));
 		run_secuence(event_order(i));
         i = i + 1;
-       end 
+    end
     i = 1;
 	expt.block_count = expt.block_count + 1;
 	display_instructions(4);
