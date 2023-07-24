@@ -28,6 +28,8 @@ expt.lumblue = 0.4;
 expt.max_lumblue = 5; % Max possible value. Will be modified after 7th reversal
 expt.min_lumblue = 0; % Min possible value. Will be modified after 7th reversal
 expt.reversals_lum_arr = []; % Array to store lumblue values when a reversal happens
+% Display size should be changed according to experiment conditions using a formula
+expt.display_size =  visual_angle2pixel(4,24,64,0);
 
 %% Functions path
 addpath(pwd);
