@@ -81,11 +81,11 @@ while expt.isrunning && expt.reversals <= expt.reversal_threshold && expt.trial 
 		dominant = prev_dominant;
 	end
 	% Store results
-	if strcmp(dominant, 'LeftArrow')
+	if strcmp(expt.k, 'LeftArrow')
 		lum_output(expt.trial).dominant = 1;
-	elseif strcmp(dominant, 'RightArrow')
+	elseif strcmp(expt.k, 'RightArrow')
 		lum_output(expt.trial).dominant = 2;
-	elseif strcmp(dominant, 'DownArrow')
+	elseif strcmp(expt.k, 'DownArrow')
 		lum_output(expt.trial).dominant = 3;
 	end
 	lum_output(expt.trial).lum_blue = expt.lumblue;
