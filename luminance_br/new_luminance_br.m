@@ -19,6 +19,7 @@ expt.key = ''; % Empty string to store key pressed
 expt.state = 0; % Keep track of the current state of the response keyboard
 
 
+expt.event_dur = [0 0.7 2]; % Duration of four stages.
 expt.min_trials = 40 ; % Minimum number of trials
 expt.max_trials = 100;
 expt.isrunning = true;
@@ -60,6 +61,7 @@ while expt.isrunning && expt.reversals <= expt.reversal_threshold && expt.trial 
 
 	if stage == 1
 		upd_screen(stage, dominant);
+		wait(expt.event_dur(stage));
 	elseif stage == 2
             [dominant, wasKeyDown] = response(wasKeyDown); % Take subject input
 
@@ -87,7 +89,7 @@ while expt.isrunning && expt.reversals <= expt.reversal_threshold && expt.trial 
                 update = false;
             end
 	elseif stage == 3
-		expt.trial
+		expt.trial = expt.trial + 1;
 		stage = 0;
 	end
 	stage = stage + 1;
