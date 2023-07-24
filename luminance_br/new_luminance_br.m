@@ -73,6 +73,17 @@ while expt.isrunning && expt.reversals <= expt.reversal_threshold && expt.trial 
 	while ~strcmp(dominant, 'LeftArrow') && ~strcmp(dominant, 'RightArrow') && ~strcmp(dominant, 'DownArrow')
 			[dominant, wasKeyDown] = response(wasKeyDown); % Take subject input
 	end
+	% Store results
+	if strcmp(dominant, 'LeftArrow')
+		lum_output(expt.trial).dominant = 1;
+	elseif strcmp(dominant, 'RightArrow')
+		lum_output(expt.trial).dominant = 2;
+	elseif strcmp(dominant, 'DownArrow')
+		lum_output(expt.trial).dominant = 3;
+	end
+	lum_output(expt.trial).lum_blue = expt.lumblue;
+	lum_output(expt.trial).response = dominant;
+
 	% If input 'DownArrow' change dominant to prev_dominant
 	% because mixed is considered as previous vote
 	if strcmp(dominant, 'DownArrow')
@@ -80,16 +91,6 @@ while expt.isrunning && expt.reversals <= expt.reversal_threshold && expt.trial 
 		expt.mixed_arr(expt.mixed_votes) = expt.lumblue;
 		dominant = prev_dominant;
 	end
-	% Store results
-	if strcmp(expt.k, 'LeftArrow')
-		lum_output(expt.trial).dominant = 1;
-	elseif strcmp(expt.k, 'RightArrow')
-		lum_output(expt.trial).dominant = 2;
-	elseif strcmp(expt.k, 'DownArrow')
-		lum_output(expt.trial).dominant = 3;
-	end
-	lum_output(expt.trial).lum_blue = expt.lumblue;
-	lum_output(expt.trial).response = expt.k;
 
 	% Check for reversals
 	if strcmp(dominant, prev_dominant) ~= 1 && strcmp(prev_dominant, '') ~= 1
