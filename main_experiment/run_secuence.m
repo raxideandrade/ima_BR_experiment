@@ -26,7 +26,7 @@ while expt.isrunning && counter <= expt.block_size
     pause(0.75);
     % Subject chooses dominant
     while ~strcmp(dominant, 'LeftArrow') && ~strcmp(dominant, 'RightArrow') && ~strcmp(dominant, 'DownArrow')
-        display_cross
+        display_cross();
         % Wait for keypress
         [dominant, wasKeyDown] = response(wasKeyDown);
     end
