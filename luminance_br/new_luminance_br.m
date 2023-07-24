@@ -51,7 +51,8 @@ while expt.isrunning && expt.reversals <= expt.reversal_threshold && expt.trial 
 
 	% Correct lumblue after n reversals to the average of lumblue
     expt.lumblue_mean = mean(expt.reversals_lum_arr);
-    save(fullfile('output', ['luminance_', num2str(expt.subject), '.mat']), 'expt');
+    save(fullfile('output', ['expt_', num2str(expt.subject), '.mat']), 'expt');
+    save(fullfile('lum_output', ['luminance_', num2str(expt.subject), '.mat']), 'lum_output');
     if expt.reversals == 7 && expt.correct_lumblue
         expt.lumblue = expt.lumblue_mean;
 		[expt.min_lumblue, expt.max_lumblue] = find_nearest_values(expt.reversals_lum_arr); % Set new lum max and min
