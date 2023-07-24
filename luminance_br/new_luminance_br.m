@@ -28,6 +28,12 @@ expt.lumblue = 0.4;
 expt.max_lumblue = 5; % Max possible value. Will be modified after 7th reversal
 expt.min_lumblue = 0; % Min possible value. Will be modified after 7th reversal
 expt.reversals_lum_arr = []; % Array to store lumblue values when a reversal happens
+expt.correct_lumblue = true;
+expt.mixed_arr = []; % Array to store lumblue values when subject votes 'mixed'
+expt.mixed_votes = 0; % For indexing results
+expt.step_size = 0.5; % Update luminance by n percent
+expt.reversals = 0;
+expt.reversal_threshold = 15; % Experimet stops when reached
 % Display size should be changed according to experiment conditions using a formula
 expt.display_size =  visual_angle2pixel(4,24,64,0);
 
