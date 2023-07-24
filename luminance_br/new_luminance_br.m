@@ -69,7 +69,7 @@ while expt.isrunning && expt.reversals <= expt.reversal_threshold && expt.trial 
 
 	if stage == 1
 		upd_screen(stage, dominant);
-		wait(expt.event_dur(stage));
+		pause(expt.event_dur(stage));
 	elseif stage == 2
 
 		% Wait until valid input
@@ -90,7 +90,7 @@ while expt.isrunning && expt.reversals <= expt.reversal_threshold && expt.trial 
 		lum_output(expt.trial).response = expt.k;
 
 		% Check for reversals
-		if strcmp(dominant, prev_dominant) ~= 1 && strcmp(pre_dominant, '') ~= 1
+		if strcmp(dominant, prev_dominant) ~= 1 && strcmp(prev_dominant, '') ~= 1
 			expt.reversals = expt.reversals + 1; 
 			expt.reversals_lum_arr(expt.reversals) = expt.lumblue;
 		end
@@ -101,7 +101,7 @@ while expt.isrunning && expt.reversals <= expt.reversal_threshold && expt.trial 
 		stage = 0;
         %Print lumblue value for debugging 
         expt.lumblue
-		wait(expt.event_dur(stage));
+		pause(expt.event_dur(stage));
 	end
 	stage = stage + 1;
 end
