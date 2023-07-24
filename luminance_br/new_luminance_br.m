@@ -84,13 +84,14 @@ while expt.isrunning && expt.reversals <= expt.reversal_threshold && expt.trial 
                     expt.reversals = expt.reversals + 1; 
                     expt.reversals_lum_arr(expt.reversals) = expt.lumblue;
                 end
-            else
-                % Subject used wrong key
-                update = false;
             end
 	elseif stage == 3
+		upd_lum(dominant, prev_dominant);
 		expt.trial = expt.trial + 1;
 		stage = 0;
+        %Print lumblue value for debugging 
+        expt.lumblue
+		wait(expt.event_dur(stage));
 	end
 	stage = stage + 1;
 end

@@ -1,4 +1,4 @@
-function upd_lum(dominant, pre_dominant)
+function upd_lum(dominant, prev_dominant)
     %% This function increases or reduces the lumblue 
     % variable by expt.step_size. If subject chose left
     % twice, lumblue is increased, if subject chose right
@@ -8,7 +8,7 @@ function upd_lum(dominant, pre_dominant)
 
     global expt;
     
-    if strcmp(dominant, pre_dominant)
+    if strcmp(dominant, prev_dominant)
         if strcmp(dominant, 'LeftArrow')
             % Increase lumblue
             expt.lumblue = expt.lumblue + (expt.lumblue * expt.step_size);
