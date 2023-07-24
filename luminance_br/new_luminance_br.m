@@ -67,6 +67,7 @@ while expt.isrunning && expt.reversals <= expt.reversal_threshold && expt.trial 
 
 	upd_screen(1, dominant);
 	pause(0.7);
+	display_cross();
 
 	% Wait until valid input
 	while ~strcmp(dominant, 'LeftArrow') && ~strcmp(dominant, 'RightArrow') && ~strcmp(dominant, 'DownArrow')
