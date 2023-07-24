@@ -63,30 +63,32 @@ while expt.isrunning && expt.reversals <= expt.reversal_threshold && expt.trial 
 		upd_screen(stage, dominant);
 		wait(expt.event_dur(stage));
 	elseif stage == 2
-            [dominant, wasKeyDown] = response(wasKeyDown); % Take subject input
 
-            if strcmp(dominant, 'LeftArrow') || strcmp(dominant, 'RightArrow') || strcmp(dominant, 'DownArrow')
-                
-                % If input 'DownArrow' change dominant to prev_dominant
-                % because mixed is considered as previous vote
-                if strcmp(dominant, 'DownArrow')
-                    expt.mixed_votes = expt.mixed_votes + 1;
-                    expt.mixed_arr(expt.mixed_votes) = expt.lumblue;
-                    dominant = prev_dominant;
-                end
-                expt.output(expt.trial, :) = [strcmp(dominant, 'LeftArrow') expt.lumblue];
-                lum_output(expt.trial).dominant = strcmp(dominant, 'LeftArrow') ;
-                lum_output(expt.trial).lum_blue = expt.lumblue;
-                lum_output(expt.trial).response = expt.k;
+		% Wait until valid input
+		while ~strcmp(dominant, 'LeftArrow') && ~strcmp(dominant, 'RightArrow') && ~strcmp(dominant, 'DownArrow')
+                [dominant, wasKeyDown] = response(wasKeyDown); % Take subject input
+		end
+		% If input 'DownArrow' change dominant to prev_dominant
+		% because mixed is considered as previous vote
+		if strcmp(dominant, 'DownArrow')
+			expt.mixed_votes = expt.mixed_votes + 1;
+			expt.mixed_arr(expt.mixed_votes) = expt.lumblue;
+			dominant = prev_dominant;
+		end
+		% Store results
+		expt.output(expt.trial, :) = [strcmp(dominant, 'LeftArrow') expt.lumblue];
+		lum_output(expt.trial).dominant = strcmp(dominant, 'LeftArrow') ;
+		lum_output(expt.trial).lum_blue = expt.lumblue;
+		lum_output(expt.trial).response = expt.k;
 
-                % Check for reversals
-                if strcmp(dominant, prev_dominant) ~= 1 && strcmp(pre_dominant, '') ~= 1
-                    expt.reversals = expt.reversals + 1; 
-                    expt.reversals_lum_arr(expt.reversals) = expt.lumblue;
-                end
-            end
+		% Check for reversals
+		if strcmp(dominant, prev_dominant) ~= 1 && strcmp(pre_dominant, '') ~= 1
+			expt.reversals = expt.reversals + 1; 
+			expt.reversals_lum_arr(expt.reversals) = expt.lumblue;
+		end
 	elseif stage == 3
 		upd_lum(dominant, prev_dominant);
+		upd_screen(stage, dominant); % Display image chosen as dominant
 		expt.trial = expt.trial + 1;
 		stage = 0;
         %Print lumblue value for debugging 
@@ -95,3 +97,6 @@ while expt.isrunning && expt.reversals <= expt.reversal_threshold && expt.trial 
 	end
 	stage = stage + 1;
 end
+expt.reversals_lum_media = median(expt.reversals_lum_arr);
+expt.luminance_median = median(expt.output(:,2));
+expt.luminance_mean = mean(expt.output(:,2)); 
