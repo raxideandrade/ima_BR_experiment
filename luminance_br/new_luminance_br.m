@@ -54,7 +54,7 @@ while expt.isrunning && expt.reversals <= expt.reversal_threshold && expt.trial 
     save(fullfile('output', ['luminance_', num2str(expt.subject), '.mat']), 'expt');
     if expt.reversals == 7 && expt.correct_lumblue
         expt.lumblue = expt.lumblue_mean;
-		[expt.min_lumblue, expt.max_lumblue] = find_nearest_values(expt.reversals_lum_arr);
+		[expt.min_lumblue, expt.max_lumblue] = find_nearest_values(expt.reversals_lum_arr); % Set new lum max and min
 		expt.correct_lumblue = false;
 
         if expt.lumblue_mean > 0.4
