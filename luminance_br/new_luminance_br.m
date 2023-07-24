@@ -65,8 +65,7 @@ while expt.isrunning && expt.reversals <= expt.reversal_threshold && expt.trial 
         end
     end
 
-	stage = 2;
-	upd_screen(stage, dominant);
+	upd_screen(1, dominant);
 	pause(0.7);
 
 	% Wait until valid input
@@ -91,9 +90,8 @@ while expt.isrunning && expt.reversals <= expt.reversal_threshold && expt.trial 
 		expt.reversals = expt.reversals + 1; 
 		expt.reversals_lum_arr(expt.reversals) = expt.lumblue;
 	end
-	stage = 3;
 	upd_lum(dominant, prev_dominant);
-	upd_screen(stage, dominant); % Display image chosen as dominant
+	upd_screen(3, dominant); % Display image chosen as dominant
 	expt.trial = expt.trial + 1;
 	%Print lumblue value for debugging 
 	expt.lumblue
