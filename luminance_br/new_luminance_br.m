@@ -18,8 +18,6 @@ wasKeyDown = false;
 expt.key = ''; % Empty string to store key pressed
 expt.state = 0; % Keep track of the current state of the response keyboard
 
-
-expt.event_dur = [0 0.7 2]; % Duration of four stages.
 expt.min_trials = 40 ; % Minimum number of trials
 expt.max_trials = 100;
 expt.isrunning = true;
@@ -69,7 +67,7 @@ while expt.isrunning && expt.reversals <= expt.reversal_threshold && expt.trial 
 
 	if stage == 1
 		upd_screen(stage, dominant);
-		pause(expt.event_dur(stage));
+		pause(0.7);
 	elseif stage == 2
 
 		% Wait until valid input
@@ -101,7 +99,7 @@ while expt.isrunning && expt.reversals <= expt.reversal_threshold && expt.trial 
 		stage = 0;
         %Print lumblue value for debugging 
         expt.lumblue
-		pause(expt.event_dur(stage));
+		pause(2);
 	end
 	stage = stage + 1;
 end
