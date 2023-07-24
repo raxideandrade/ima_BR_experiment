@@ -1,4 +1,4 @@
-function [min_lumblue, max_lumblue] = findNearestValues(array)
+function [min_lumblue, max_lumblue] = find_nearest_values(array)
     % Calculate the mean of the array
     mean_value = mean(array);
 

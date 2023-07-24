@@ -1,4 +1,4 @@
-function [time] = upd_screen(event, dominant, pre_dominant)
+function [time] = upd_screen(event, dominant)
     %% Function for updating the screen and drawing stimuli
     % based on the provided event and participant's input
     
@@ -6,12 +6,12 @@ function [time] = upd_screen(event, dominant, pre_dominant)
     global win
     global expt
 
-    if event == 2 % Display anaglyph
+    if event == 1 % Display anaglyph
         anaglyph = expt.anaglyph;
         anaglyph(:,:,2:3) = expt.anaglyph(:,:,2:3).*expt.lumblue;
         expt.anaglyph_text = Screen('MakeTexture', win.window, anaglyph);
         Screen('DrawTexture', win.window, expt.anaglyph_text);
-    elseif event ==  4
+    elseif event ==  3
         if strcmp(dominant, 'LeftArrow')
             Screen('DrawTexture', win.window, expt.backgroundImage_text);
         else
