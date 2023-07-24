@@ -93,6 +93,8 @@ while expt.isrunning && expt.reversals <= expt.reversal_threshold && expt.trial 
 	upd_lum(dominant, prev_dominant);
 	upd_screen(3, dominant); % Display image chosen as dominant
 	expt.trial = expt.trial + 1;
+	prev_dominant = dominant;
+	dominant = '';
 	%Print lumblue value for debugging 
 	expt.lumblue
 	pause(2);
