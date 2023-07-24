@@ -105,5 +105,5 @@ end
 expt.reversals_lum_media = median(expt.reversals_lum_arr);
 expt.luminance_median = median(expt.output(:,2));
 expt.luminance_mean = mean(expt.output(:,2));
-save(fullfile('lum_output', ['luminance_', num2str(expt.subject), '.mat']));
+save(fullfile('lum_output', ['luminance_', num2str(expt.subject), '.mat']), 'lum_output');
 
